@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  <select id="mybot" size="10">
+    <option>Steeve</option>
+    <option>Alice</option>
+    <option>Oscar</option>
+  </select>
+</form>
+<br>
+
+<p>Click the button to add a Bot at the beginning of the dropdown list (before "Apple").</p>
+
+<input id="Botname" type="text"  name="Botname">
+<button type="button" onclick="myFunction()">Add Bot</button>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mybot");
+  var option = document.createElement("option");
+  var y = document.getElementById("Botname");
+  option.text = y.value;
+  x.add(option, x[0]);
+}
+</script>
+
+</body>
+</html>
+

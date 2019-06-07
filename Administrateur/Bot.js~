@@ -1,0 +1,17 @@
+class bot {
+	this.app = express();
+
+    constructor(port){
+    
+    const express = require("express");
+    const RiveScript = require("rivescript");
+    const bodyParser = require("body-parser");
+    this.bot = new RiveScript();
+    this.port = port;
+	}
+
+	
+
+	app.use(bodyParser.urlencoded({ extended: true }));
+	// set the view engine to ejs
+    app.set('view engine', 'ejs');

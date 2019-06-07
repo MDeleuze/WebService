@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Random game</title>
+</head>
+<script type="text/javascript">
+  init = function(){
+    score = document.getElementById("score");
+    console.log(score);
+  }
+  play = function(){
+    //console.log("score"+score.value);
+    let random = Math.floor(Math.random() * Math.floor(100)); // random integer between 0 and 100
+    if(random > score.value){
+      score.value = random;
+    }
+    if(confirm(random)){ // when ok button is clicked, the score on the web page is refreshed
+      reload();
+    }
+  }
+  reload = function(){ // updates the content of the dom element with the id userscore
+    var div = document.getElementById("userscore");
+    var content = "Your best score : "+score.value;
+    div.innerHTML= content;
+  }
+</script>
+<body onload='init()'>
+<div class = "text-center">
+<h1>Welcome to the chatbot !</h1> <!-- gets the username and the score from the post method in chooseGame -->
+<h2 class = "text-danger" id = "userscore">Your best score : <%= score %></h2>
+</div>
+<div class="pt-5 text-center">
+<button class="pt-2 btn btn-warning btn-lg" onclick="play()" >Play</button> <!-- button runs javascript function play when clicked-->
+<form action = "/backMenu" method = "post">
+</div>
+<div class="pt-5 text-center">
+  <input type = "submit" class="pt-2 btn btn-success btn-lg" value = "Save score and go back to menu"> <!-- button that resend to the chooseGame page along with the username and his score-->
+  <input type = "hidden" id = "name" name = "name" value = "<%= username %>">
+  <input type = "hidden" id = "score" name = "score" value = "<%= score %>">
+</form>
+</div>
+<div class="pt-5 text-center">
+		<h2 class = "text-primary">Scoreboard</h2>
+    <div class="text-center">
+		<table class="table table-striped table-light" border = "1">
+				<tr class = thead-dark><th>Rank</th><th>Pseudo</th><th>Score</th></tr> <!-- displays the Scoreboard by reading the usersList table (provided in the body of the request) -->
+        <% for(var i=0; i < usersList.length; i++) { %>
+			<tr>
+        <td><%=usersList[i].rank%></td>
+        <td><%=usersList[i].login%></td>
+        <td><%=usersList[i].score%></td>
+      </tr>
+			<% } %>
+		</table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Choose a Bot</title>
+</head>
+<h1 class="text-center text-primary">Welcome</h1>
+<div class="pt-5 text-center">
+<form action = "/bot1" method = "post">  <!-- Form to choose the games -->
+  <input type = "submit" class=" btn btn-info btn-lg" value = "ChatBot 1">
+  <p class="pt-2"> Steeve </p>
+  <input type = "hidden" id = "score" name = "score" value ="Steeve">
+</form>
+</div>
+<div class="pt-5 text-center">
+<form action = "/botNotAvailable" method = "post">
+  <input type = "submit" class="btn btn-info btn-lg" value = "ChatBot 2">
+  <p class="pt-2"> Alice </p>
+  <input type = "hidden" id = "score" name = "score" value ="<%= score %>">
+</form>
+</div>
+<div class="pt-5 text-center">
+<form action = "/botNotAvailable" method = "post">
+  <input type = "submit" class="btn btn-info btn-lg" id = "name" value = "ChatBot 3">
+  <p class="pt-2"> Oscar </p>
+  <input type = "hidden" id = "score" name = "score" value ="<%= score %>">
+</form>
+</div>
+<div class="pt-5 text-center"> <!-- Disconnect button that redirects to login page -->
+<form action = "/disconnect" method "post">
+  <input type ="submit" class="btn btn-danger btn-lg" value = "New ChatBot">
+</form>
+</div>
+
+<div class="pt-5 text-center">
+  <script>function creationbouton() {
+  var btn =  document.createElement('button'); //créer le bouton
+  vart input = document.getElementById('newevent');//récupérer l'input
+  btn.setAttribute('name', input .value); //lui donner son nom
+  input.parentNode.insertBefore(btn, input.nextSibling);//l'insérer dans le dom où on veut: ici après l'input 
+  //(insérer parmi les fils du parent de l'input, avant le suivant de l'input)
+  }
+  </script>
+  <input type="button" onclick="creationbouton()" value="OK"/>
+<input type="text" name="newevent" id="newevent"/>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="1">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+</body>
+</html>
